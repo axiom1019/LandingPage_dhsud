@@ -17,11 +17,11 @@
     @font-face { font-family: "Public Sans"; src: url("/assets/fonts/public-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 
     :root {
-      --navy: #1e3a8a; --navy-deep: #172554; --navy-hover: #1e40af; --navy-tint: #eff6ff;
+      --navy: #1e3a8a; --navy-deep: #172554; --navy-dark: #0f1a3d; --navy-hover: #1e40af; --navy-tint: #eff6ff;
       --red: #b91c1c; --gold: #fcd34d; --focus: #1d4ed8;
       --ink: #0f172a; --label: #334155; --muted: #475569; --line: #e2e8f0;
       --mist: #f8fafc; --hover: #f1f5f9; --white: #ffffff;
-      --govbar: #111827; --foot: #0f172a; --foot-ink: #cbd5e1; --foot-muted: #94a3b8;
+      --foot: #0f172a; --foot-ink: #cbd5e1; --foot-muted: #94a3b8;
       --ok-bg: #dcfce7; --ok-ink: #166534; --wait-bg: #e2e8f0; --wait-ink: #334155;
       --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
       --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
@@ -40,14 +40,6 @@
     .skip:focus { top: var(--space-3); color: var(--white); }
     .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-inline: var(--space-6); }
 
-    /* GOVPH bar */
-    .govbar { background: var(--govbar); color: #e5e7eb; font-size: 14px; }
-    .govbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 40px; }
-    .govbar a { color: #e5e7eb; text-decoration: none; }
-    .govbar a:hover { color: var(--white); text-decoration: underline; }
-    .govbar .govph { font-weight: 700; letter-spacing: .04em; }
-    .govbar :focus-visible { outline-color: var(--gold); }
-
     /* Masthead */
     .masthead { background: var(--white); }
     .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding-block: var(--space-5); }
@@ -63,11 +55,11 @@
     .pst .clock { font-size: 20px; font-weight: 700; }
 
     /* Main nav */
-    .mainnav { background: var(--navy); border-bottom: 4px solid var(--red); }
+    .mainnav { background: var(--navy-deep); border-bottom: 4px solid var(--red); }
     .mainnav ul { list-style: none; display: flex; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
     .mainnav a { display: block; padding: 14px var(--space-5); color: var(--white); text-decoration: none; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: background-color 150ms var(--ease-out); }
     .mainnav li:first-child a { padding-left: 0; }
-    .mainnav a:hover, .mainnav a[aria-current="page"] { background: var(--navy-deep); color: var(--white); }
+    .mainnav a:hover, .mainnav a[aria-current="page"] { background: var(--navy-dark); color: var(--white); }
     .mainnav li:first-child a:hover, .mainnav li:first-child a[aria-current="page"] { background: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
     .mainnav :focus-visible { outline-color: var(--gold); outline-offset: -3px; }
 
@@ -173,12 +165,6 @@
   </style>
 </head>
 <body>
-  <div class="govbar">
-    <div class="wrap">
-      <a class="govph" href="https://www.gov.ph/" rel="noopener">GOVPH</a>
-    </div>
-  </div>
-
   <header class="masthead">
     <div class="wrap">
       <a class="identity" href="/">
