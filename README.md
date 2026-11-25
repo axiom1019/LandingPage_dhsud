@@ -15,11 +15,11 @@ The layout follows the standard Philippine government (GOVPH) website pattern: a
 ## Add or launch a service
 Copy a `<li>` row in the services list in `index.html`. To launch one, change its `<div class="row is-off">` to `<a class="row" href="SERVICE URL">`, set the status to `class="status ok"` with the text `Available`, and copy the arrow icon from the Schedule Handler row.
 
-## Deploy on Vercel with axiomaip.com
+## Deploy on Vercel at dhsudr10.axiomaip.com
 1. Push this folder to a new GitHub repository.
 2. In Vercel: **Add New → Project**, import the repository. Framework preset: **Other**. No build command, output directory is the root.
-3. In the project: **Settings → Domains**, add `axiomaip.com` (and `www.axiomaip.com` if wanted).
-4. Vercel shows the DNS records to add. At your domain registrar, add them (usually an `A` record for the root domain and a `CNAME` for `www`). HTTPS is issued automatically once DNS updates.
+3. In the project: **Settings → Domains**, add `dhsudr10.axiomaip.com`.
+4. In Cloudflare (where axiomaip.com is managed): **DNS → Records → Add record**, type `CNAME`, name `dhsudr10`, target `cname.vercel-dns.com` (or the value Vercel shows), proxy status **DNS only**. HTTPS is issued automatically once DNS updates.
 5. Every push to the main branch redeploys the page.
 
 Note: Vercel's free Hobby plan is for personal, non-commercial use. Check with your approvers whether an official office page needs the Pro plan.
