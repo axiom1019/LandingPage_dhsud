@@ -12,167 +12,146 @@
   <link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    @font-face {
-      font-family: "Public Sans";
-      src: url("assets/fonts/public-sans-latin-400-normal.woff2") format("woff2");
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
-    @font-face {
-      font-family: "Public Sans";
-      src: url("assets/fonts/public-sans-latin-700-normal.woff2") format("woff2");
-      font-weight: 700; font-style: normal; font-display: swap;
-    }
+    @font-face { font-family: "Public Sans"; src: url("assets/fonts/public-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Public Sans"; src: url("assets/fonts/public-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 
     :root {
-      /* DHSUD colours, shared with the Document Routing design system */
-      --navy: #1e3a8a;
-      --navy-hover: #1e40af;
-      --navy-tint: #eff6ff;
-      --red: #b91c1c;
-      --focus: #1d4ed8;
-      --ink: #0f172a;
-      --label: #334155;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --mist: #f8fafc;
-      --hover: #f1f5f9;
-      --white: #ffffff;
-      --ok-bg: #dcfce7;
-      --ok-ink: #166534;
-      --wait-bg: #e2e8f0;
-      --wait-ink: #334155;
-
+      --navy: #1e3a8a; --navy-deep: #172554; --navy-hover: #1e40af; --navy-tint: #eff6ff;
+      --red: #b91c1c; --gold: #fcd34d; --focus: #1d4ed8;
+      --ink: #0f172a; --label: #334155; --muted: #475569; --line: #e2e8f0;
+      --mist: #f8fafc; --hover: #f1f5f9; --white: #ffffff;
+      --govbar: #111827; --foot: #0f172a; --foot-ink: #cbd5e1; --foot-muted: #94a3b8;
+      --ok-bg: #dcfce7; --ok-ink: #166534; --wait-bg: #e2e8f0; --wait-ink: #334155;
       --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
       --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
-      --radius: 12px;
-      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --radius: 10px; --ease-out: cubic-bezier(.16, 1, .3, 1);
     }
-
     * { box-sizing: border-box; }
-    html { color-scheme: light; -webkit-text-size-adjust: 100%; scrollbar-color: #94a3b8 var(--mist); }
-    body {
-      margin: 0;
-      min-height: 100dvh;
-      display: flex; flex-direction: column;
+    html { color-scheme: light; -webkit-text-size-adjust: 100%; scrollbar-color: #94a3b8 var(--mist); scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100dvh; display: flex; flex-direction: column;
       font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.55;
-      font-variant-numeric: lining-nums;
-      color: var(--ink);
-      background: var(--white);
-      text-rendering: optimizeLegibility;
-    }
+      font-size: 17px; line-height: 1.55; font-variant-numeric: lining-nums; color: var(--ink); background: var(--white); }
     ::selection { background: var(--navy); color: var(--white); }
     a { color: var(--navy); text-underline-offset: 3px; text-decoration-thickness: 1px; }
     a:hover { color: var(--navy-hover); }
     :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-
-    .skip {
-      position: absolute; left: var(--space-4); top: -100px;
-      background: var(--navy); color: var(--white);
-      padding: var(--space-2) var(--space-4); border-radius: 6px; z-index: 10;
-    }
+    .skip { position: absolute; left: var(--space-4); top: -100px; background: var(--navy); color: var(--white); padding: var(--space-2) var(--space-4); border-radius: 6px; z-index: 10; }
     .skip:focus { top: var(--space-3); color: var(--white); }
-
     .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-inline: var(--space-6); }
 
-    /* Header */
-    .site-header { border-bottom: 1px solid var(--line); }
-    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 76px; }
-    .identity { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--ink); }
-    .identity img { width: 44px; height: 44px; }
+    /* GOVPH bar */
+    .govbar { background: var(--govbar); color: #e5e7eb; font-size: 14px; }
+    .govbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 40px; }
+    .govbar a { color: #e5e7eb; text-decoration: none; }
+    .govbar a:hover { color: var(--white); text-decoration: underline; }
+    .govbar .govph { font-weight: 700; letter-spacing: .04em; }
+    .govbar nav ul { list-style: none; display: flex; gap: var(--space-5); margin: 0; padding: 0; }
+    .govbar :focus-visible { outline-color: var(--gold); }
+
+    /* Masthead */
+    .masthead { background: var(--white); }
+    .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding-block: var(--space-5); }
+    .identity { display: flex; align-items: center; gap: var(--space-4); color: var(--ink); text-decoration: none; }
+    .identity img { width: 76px; height: 76px; flex: none; }
     .identity span { display: flex; flex-direction: column; line-height: 1.25; }
-    .identity strong { font-size: 17px; }
     .identity small { font-size: 14px; color: var(--muted); }
-    .region { font-size: 15px; color: var(--muted); }
-    .flagline { height: 4px; background: linear-gradient(90deg, var(--navy) 0 66%, var(--red) 66% 100%); }
+    .identity strong { font-size: 22px; color: var(--navy); }
+    .identity em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--red); }
+    .pst { text-align: right; font-size: 14px; color: var(--muted); line-height: 1.35; }
+    .pst b { display: block; font-size: 13px; font-weight: 700; color: var(--label); text-transform: uppercase; letter-spacing: .06em; }
+    .pst time { display: block; font-variant-numeric: tabular-nums; color: var(--ink); }
+    .pst .clock { font-size: 20px; font-weight: 700; }
 
-    /* Main */
+    /* Main nav */
+    .mainnav { background: var(--navy); border-bottom: 4px solid var(--red); }
+    .mainnav ul { list-style: none; display: flex; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+    .mainnav a { display: block; padding: 14px var(--space-5); color: var(--white); text-decoration: none; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: background-color 150ms var(--ease-out); }
+    .mainnav li:first-child a { padding-left: 0; }
+    .mainnav a:hover, .mainnav a[aria-current="page"] { background: var(--navy-deep); color: var(--white); }
+    .mainnav li:first-child a:hover, .mainnav li:first-child a[aria-current="page"] { background: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+    .mainnav :focus-visible { outline-color: var(--gold); outline-offset: -3px; }
+
+    /* Banner */
+    .banner { position: relative; isolation: isolate; color: var(--white); background: var(--navy-deep); }
+    .banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; z-index: -2; }
+    .banner::before { content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgb(15 23 42 / .88) 0%, rgb(23 37 84 / .72) 45%, rgb(23 37 84 / .15) 100%); }
+    .banner .wrap { padding-block: 88px; }
+    .banner h1 { font-size: clamp(2.1rem, 1.4rem + 2.4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 var(--space-4); max-width: 16ch; text-wrap: balance; }
+    .banner p { font-size: 19px; margin: 0 0 var(--space-6); max-width: 44ch; color: #e2e8f0; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--white); color: var(--navy); font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 8px; transition: background-color 150ms var(--ease-out); }
+    .btn:hover { background: var(--navy-tint); color: var(--navy); }
+    .banner :focus-visible { outline-color: var(--gold); }
+
+    /* Content */
     main { flex: 1; }
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-      gap: var(--space-8);
-      align-items: start;
-      padding-block: var(--space-8) var(--space-8);
-    }
-    h1 {
-      font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-4);
-      text-wrap: balance;
-    }
-    .lead { font-size: 19px; color: var(--label); max-width: 46ch; margin: 0 0 var(--space-7); }
+    .content { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--space-7); padding-block: var(--space-8); align-items: start; }
+    .section-title { font-size: 26px; line-height: 1.2; margin: 0 0 var(--space-2); color: var(--navy); }
+    .section-lead { margin: 0 0 var(--space-5); color: var(--muted); }
 
-    h2 { font-size: 15px; font-weight: 700; color: var(--muted); margin: 0 0 var(--space-3); }
-
-    /* Service directory */
     .directory { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
     .directory li + li { border-top: 1px solid var(--line); }
-    .row {
-      display: grid;
-      grid-template-columns: 48px minmax(0, 1fr) auto;
-      gap: var(--space-4);
-      align-items: center;
-      padding: var(--space-5);
-      min-height: 96px;
-      color: var(--ink);
-      text-decoration: none;
-      background: var(--white);
-      transition: background-color 150ms var(--ease-out);
-    }
-    a.row { cursor: pointer; }
+    .row { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: var(--space-4); align-items: center; padding: var(--space-5); min-height: 96px; color: var(--ink); text-decoration: none; background: var(--white); transition: background-color 150ms var(--ease-out); }
     a.row:hover { background: var(--hover); color: var(--ink); }
     a.row:focus-visible { outline-offset: -3px; border-radius: 0; }
-    .icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      display: grid; place-items: center;
-      background: var(--navy-tint); color: var(--navy);
-    }
+    .icon { width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; background: var(--navy-tint); color: var(--navy); }
     .row.is-off .icon { background: var(--hover); color: var(--muted); }
     .row h3 { margin: 0 0 2px; font-size: 19px; line-height: 1.3; }
     .row p { margin: 0; font-size: 15.5px; color: var(--muted); }
     .end { display: flex; align-items: center; gap: var(--space-3); justify-self: end; }
-    .status {
-      font-size: 14px; font-weight: 700; white-space: nowrap;
-      padding: 4px 12px; border-radius: 999px;
-      background: var(--wait-bg); color: var(--wait-ink);
-    }
+    .status { font-size: 14px; font-weight: 700; white-space: nowrap; padding: 4px 12px; border-radius: 999px; background: var(--wait-bg); color: var(--wait-ink); }
     .status.ok { background: var(--ok-bg); color: var(--ok-ink); }
     .go { color: var(--navy); transition: transform 150ms var(--ease-out); }
     a.row:hover .go { transform: translateX(3px); }
 
-    .help { margin: var(--space-5) 0 0; font-size: 15.5px; color: var(--muted); }
+    /* Sidebar */
+    .side { display: grid; gap: var(--space-5); }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .panel h2 { margin: 0; padding: var(--space-3) var(--space-4); background: var(--navy); color: var(--white); font-size: 16px; }
+    .panel .body { padding: var(--space-4); font-size: 15.5px; color: var(--label); }
+    .panel .body p { margin: 0 0 var(--space-3); }
+    .panel .body p:last-child { margin: 0; }
+    .panel dl { margin: 0; display: grid; gap: var(--space-3); }
+    .panel dt { font-weight: 700; color: var(--ink); }
+    .panel dd { margin: 0; }
 
-    /* Photo */
-    .photo { margin: 0; position: sticky; top: var(--space-6); }
-    .photo img {
-      display: block; width: 100%; height: auto; aspect-ratio: 800 / 1004;
-      object-fit: cover; border-radius: var(--radius);
-      box-shadow: 0 1px 2px rgb(15 23 42 / .06), 0 12px 32px -12px rgb(15 23 42 / .28);
+    /* Footer (GOVPH standard) */
+    .site-footer { background: var(--foot); color: var(--foot-ink); font-size: 15px; }
+    .site-footer .cols { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: var(--space-6); padding-block: var(--space-7); }
+    .site-footer h2 { font-size: 15px; color: var(--white); margin: 0 0 var(--space-3); text-transform: uppercase; letter-spacing: .06em; }
+    .site-footer p { margin: 0 0 var(--space-3); color: var(--foot-muted); }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .site-footer a { color: var(--foot-ink); text-decoration: none; }
+    .site-footer a:hover { color: var(--white); text-decoration: underline; }
+    .site-footer :focus-visible { outline-color: var(--gold); }
+    .legal { border-top: 1px solid rgb(148 163 184 / .25); }
+    .legal .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-5); padding-block: var(--space-4); font-size: 14px; color: var(--foot-muted); }
+
+    @media (max-width: 960px) {
+      .content { grid-template-columns: 1fr; gap: var(--space-6); }
+      .site-footer .cols { grid-template-columns: 1fr 1fr; }
+      .site-footer .cols > :first-child { grid-column: 1 / -1; }
     }
-    .photo figcaption { margin-top: var(--space-3); font-size: 14px; color: var(--muted); }
-
-    /* Footer */
-    .site-footer { border-top: 1px solid var(--line); background: var(--mist); font-size: 15px; color: var(--muted); }
-    .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-5); padding-block: var(--space-5); }
-
-    @media (max-width: 900px) {
+    @media (max-width: 700px) {
       .wrap { padding-inline: var(--space-4); }
-      .region { display: none; }
-      .layout { grid-template-columns: 1fr; gap: var(--space-6); padding-block: var(--space-5) var(--space-7); }
-      .photo { order: -1; position: static; }
-      .photo img { aspect-ratio: 16 / 9; object-position: 50% 30%; }
-      .photo figcaption { display: none; }
-      .lead { font-size: 17.5px; margin-bottom: var(--space-6); }
-      .row { grid-template-columns: 44px minmax(0, 1fr); padding: var(--space-4); gap: var(--space-3) var(--space-4); }
+      .govbar nav { display: none; }
+      .masthead .wrap { padding-block: var(--space-4); }
+      .identity img { width: 56px; height: 56px; }
+      .identity strong { font-size: 18px; }
+      .identity em { font-size: 15px; }
+      .pst { display: none; }
+      .mainnav a { padding: 12px 14px; font-size: 14.5px; }
+      .banner .wrap { padding-block: var(--space-7); }
+      .banner::before { background: linear-gradient(180deg, rgb(15 23 42 / .8) 0%, rgb(23 37 84 / .92) 100%); }
+      .banner p { font-size: 17.5px; }
+      .content { padding-block: var(--space-6) var(--space-7); }
+      .row { grid-template-columns: 44px minmax(0, 1fr); padding: var(--space-4); gap: var(--space-3) var(--space-4); align-items: start; }
       .icon { width: 44px; height: 44px; }
-      .row { align-items: start; }
       .end { grid-column: 2; justify-self: start; }
+      .site-footer .cols { grid-template-columns: 1fr; gap: var(--space-5); }
     }
-
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       a.row:hover .go { transform: none; }
     }
   </style>
@@ -180,25 +159,65 @@
 <body>
   <a class="skip" href="#services">Skip to services</a>
 
-  <header class="site-header">
+  <div class="govbar">
+    <div class="wrap">
+      <a class="govph" href="https://www.gov.ph/" rel="noopener">GOVPH</a>
+      <nav aria-label="Quick links">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <header class="masthead">
     <div class="wrap">
       <a class="identity" href="/">
-        <img src="assets/seal.png" alt="" width="44" height="44">
-        <span><strong>DHSUD Region 10</strong><small>Department of Human Settlements and Urban Development</small></span>
+        <img src="assets/seal.png" alt="DHSUD seal" width="76" height="76">
+        <span>
+          <small>Republic of the Philippines</small>
+          <strong>Department of Human Settlements and Urban Development</strong>
+          <em>Region 10, Northern Mindanao</em>
+        </span>
       </a>
-      <span class="region">Northern Mindanao</span>
+      <div class="pst" aria-live="off">
+        <b>Philippine Standard Time</b>
+        <time class="clock" id="pst-time">&nbsp;</time>
+        <time id="pst-date">&nbsp;</time>
+      </div>
     </div>
-    <div class="flagline" aria-hidden="true"></div>
   </header>
 
-  <main>
-    <div class="wrap layout">
-      <div>
-        <h1>Region 10 online services</h1>
-        <p class="lead">File, book and track office requests without paper. Choose a service below and sign in with the account registered for it.</p>
+  <nav class="mainnav" aria-label="Main">
+    <div class="wrap">
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <h2 id="services-heading">Services</h2>
-        <ul class="directory" id="services" aria-labelledby="services-heading">
+  <main>
+    <section class="banner">
+      <img src="assets/hero.webp" width="1600" height="1200" alt="" fetchpriority="high">
+      <div class="wrap">
+        <h1>Region 10 online services</h1>
+        <p>File, book and track office requests without paper. Choose a service and sign in with the account registered for it.</p>
+        <a class="btn" href="#services">See the services
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <div class="wrap content">
+      <section id="services" tabindex="-1">
+        <h2 class="section-title" id="services-heading">Online services</h2>
+        <p class="section-lead">Each service has its own sign-in. Services marked in development will open here when they launch.</p>
+        <ul class="directory" aria-labelledby="services-heading">
           <!--
             To launch a service: change its <div class="row is-off"> to
             <a class="row" href="SERVICE URL">, set the status to class="status ok" with the text "Available",
@@ -244,23 +263,72 @@
             </div>
           </li>
         </ul>
+      </section>
 
-        <p class="help">Need help with a service? Contact the Administrative Division.</p>
-      </div>
-
-      <figure class="photo">
-        <img src="assets/entrance.webp" width="800" height="1004" alt="The DHSUD seal and the Region 10 sign at the regional office entrance">
-        <figcaption>DHSUD Region 10 regional office</figcaption>
-      </figure>
+      <aside class="side">
+        <section class="panel" id="about">
+          <h2>About the office</h2>
+          <div class="body">
+            <p>DHSUD Region 10 serves Northern Mindanao. These services move the office's paper requests online, one process at a time.</p>
+          </div>
+        </section>
+        <section class="panel" id="contact">
+          <h2>Signing in</h2>
+          <div class="body">
+            <dl>
+              <div><dt>Schedule Handler</dt><dd>Your dhsud.gov.ph account.</dd></div>
+              <div><dt>Application for Leave</dt><dd>Your dhsud.gov.ph account, or your registered personal email for staff without one.</dd></div>
+              <div><dt>Need help?</dt><dd>Contact the Administrative Division.</dd></div>
+            </dl>
+          </div>
+        </section>
+      </aside>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <span>Department of Human Settlements and Urban Development, Region 10</span>
-      <span>© <span id="yr">2026</span></span>
+    <div class="wrap cols">
+      <div>
+        <h2>Republic of the Philippines</h2>
+        <p>All content is in the public domain unless otherwise stated.</p>
+      </div>
+      <div>
+        <h2>About GOVPH</h2>
+        <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+        <ul>
+          <li><a href="https://www.gov.ph/" rel="noopener">GOV.PH</a></li>
+          <li><a href="https://data.gov.ph/" rel="noopener">Open Data Portal</a></li>
+          <li><a href="https://www.officialgazette.gov.ph/" rel="noopener">Official Gazette</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Government links</h2>
+        <ul>
+          <li><a href="https://op-proper.gov.ph/" rel="noopener">Office of the President</a></li>
+          <li><a href="https://ovp.gov.ph/" rel="noopener">Office of the Vice President</a></li>
+          <li><a href="https://legacy.senate.gov.ph/" rel="noopener">Senate of the Philippines</a></li>
+          <li><a href="https://www.congress.gov.ph/" rel="noopener">House of Representatives</a></li>
+          <li><a href="https://sc.judiciary.gov.ph/" rel="noopener">Supreme Court</a></li>
+          <li><a href="https://dhsud.gov.ph/" rel="noopener">DHSUD Central Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div class="wrap">
+        <span>Department of Human Settlements and Urban Development, Region 10</span>
+        <span>© <span id="yr">2026</span></span>
+      </div>
     </div>
   </footer>
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script>
+    (function () {
+      document.getElementById('yr').textContent = new Date().getFullYear();
+      var t = document.getElementById('pst-time'), d = document.getElementById('pst-date');
+      var ft = new Intl.DateTimeFormat('en-PH', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
+      var fd = new Intl.DateTimeFormat('en-PH', { timeZone: 'Asia/Manila', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      function tick() { var n = new Date(); t.textContent = ft.format(n); d.textContent = fd.format(n); }
+      tick(); setInterval(tick, 1000);
+    })();
+  </script>
 </body>
 </html>

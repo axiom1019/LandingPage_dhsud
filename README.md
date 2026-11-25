@@ -6,10 +6,10 @@ This is created for the landing page project on DHSUD Region C
 A static page with no login. It links to each DHSUD Region 10 service, and each service handles its own sign-in.
 
 - `index.html`: the whole page (HTML and CSS in one file, no build step).
-- `assets/`: the seal, favicons, the self-hosted Public Sans font (`fonts/`, SIL Open Font License), and the office photos: `entrance.webp` (the seal and Region 10 sign, used on this page), `hero.webp` and `login-panel.webp` (for service login screens). The security guard is blurred where he appears.
+- `assets/`: the seal, favicons, the self-hosted Public Sans font (`fonts/`, SIL Open Font License), and the office photos: `hero.webp` (the banner on this page), `entrance.webp` and `login-panel.webp` (for service login screens). The security guard is blurred where he appears.
 
 ## Design
-Colours follow the DHSUD Document Routing design system (Government Navy `#1e3a8a`, slate neutrals, red only in the header flag line). Type is Public Sans. Services are listed as a directory: a live service is one full-width link row, and a service that isn't live yet shows its status in words and no link. Checked with axe-core (no WCAG 2.2 AA violations) at 1440, 768, 375 and 320 px.
+The layout follows the standard Philippine government (GOVPH) website pattern: a GOVPH top bar, the agency masthead with the seal and Philippine Standard Time clock, a navigation bar, a photo banner, the services list with a sidebar, and the GOVPH footer (Republic of the Philippines, About GOVPH, government links). Colours follow the DHSUD Document Routing design system (Government Navy `#1e3a8a`, slate neutrals, red for the region line and the nav rule). Type is Public Sans. Services are listed as a directory: a live service is one full-width link row, and a service that isn't live yet shows its status in words and no link. Checked at 1366 and 390 px with no sideways scrolling.
 - `vercel.json`: clean URLs, security headers and image caching.
 
 ## Add or launch a service
