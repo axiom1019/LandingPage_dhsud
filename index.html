@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DHSUD Region 10 Online Services</title>
+  <meta name="description" content="Online services of the Department of Human Settlements and Urban Development, Region 10.">
+  <meta name="theme-color" content="#10239e">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/hero.webp">
+  <style>
+    :root {
+      --navy: #10239e;
+      --navy-deep: #0a1766;
+      --red: #ce1126;
+      --gold: #f5b800;
+      --ink: #14193a;
+      --muted: #5a6078;
+      --line: #e3e6f0;
+      --bg: #f5f6fa;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+
+    /* Top bar */
+    .topbar {
+      background: var(--navy-deep);
+      color: #fff;
+      font-size: 13px;
+    }
+    .topbar .wrap { display: flex; justify-content: space-between; gap: 12px; padding-block: 6px; }
+    .topbar span:last-child { opacity: .75; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background: var(--navy-deep);
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; top: 0; bottom: 0; right: 0; width: 55%; z-index: -1;
+      background:
+        linear-gradient(90deg, var(--navy-deep) 0%, rgba(10,23,102,.55) 22%, rgba(10,23,102,0) 45%),
+        url("assets/hero.webp") 78% center / cover no-repeat;
+    }
+    .hero .wrap { width: 100%; }
+    .hero-text { max-width: 520px; }
+    .hero::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+      background: linear-gradient(90deg, var(--navy) 0 50%, var(--red) 50% 100%);
+    }
+    .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .brand img { width: 64px; height: 64px; border-radius: 50%; background: #fff; padding: 3px; }
+    .brand div { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; line-height: 1.35; }
+    .brand strong { display: block; font-size: 15px; letter-spacing: .04em; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; margin: 0 0 16px; max-width: 13ch; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p { font-size: 18px; max-width: 46ch; margin: 0 0 28px; opacity: .92; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--navy);
+      font-weight: 600; text-decoration: none;
+      padding: 12px 22px; border-radius: 8px;
+    }
+    .btn:hover { background: var(--gold); color: var(--navy-deep); }
+    .btn:focus-visible, .card a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* Services */
+    .services { padding-block: 56px 64px; }
+    .services h2 { font-size: 28px; margin: 0 0 6px; }
+    .services > .wrap > p { color: var(--muted); margin: 0 0 28px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--navy);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .card.red { border-top-color: var(--red); }
+    .card.gold { border-top-color: var(--gold); }
+    .card .icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: #eef0fb; color: var(--navy);
+    }
+    .card.red .icon { background: #fdecee; color: var(--red); }
+    .card.gold .icon { background: #fff6d9; color: #9a7300; }
+    .card h3 { margin: 4px 0 0; font-size: 19px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+    .status {
+      align-self: flex-start;
+      font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 999px;
+      background: #eef0f5; color: var(--muted);
+    }
+    .status.live { background: #e3f5ea; color: #136c34; }
+    .card a.open {
+      align-self: flex-start;
+      margin-top: 6px;
+      font-weight: 600; text-decoration: none; color: var(--navy);
+    }
+    .card a.open:hover { text-decoration: underline; }
+    .card .soon { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+    .note {
+      margin-top: 32px;
+      background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold);
+      border-radius: 8px; padding: 16px 20px; color: var(--muted); font-size: 15px;
+    }
+
+    footer { background: var(--navy-deep); color: #cfd4f2; font-size: 14px; }
+    footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    footer strong { color: #fff; }
+
+    @media (max-width: 720px) {
+      .topbar span:last-child { display: none; }
+      .hero { min-height: 560px; align-items: flex-end; padding-bottom: 48px; }
+      .hero::before { width: 100%; background: linear-gradient(0deg, rgba(10,23,102,.97) 0%, rgba(10,23,102,.85) 50%, rgba(10,23,102,.3) 100%), url("assets/hero.webp") 80% center / cover no-repeat; }
+      .hero p { font-size: 16px; }
+      .wrap { padding-inline: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span>Republic of the Philippines</span>
+      <span>Department of Human Settlements and Urban Development</span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap"><div class="hero-text">
+      <div class="brand">
+        <img src="assets/seal.png" alt="DHSUD seal" width="64" height="64">
+        <div><strong>DHSUD Region 10</strong>Northern Mindanao</div>
+      </div>
+      <h1>Online services for <em>Region 10</em></h1>
+      <p>File, book and track office requests online. Pick a service below. Each service asks you to sign in.</p>
+      <a class="btn" href="#services">See services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div></div>
+  </header>
+
+  <main class="services" id="services">
+    <div class="wrap">
+      <h2>Services</h2>
+      <p>Open a service to sign in. Your access depends on the account registered for that service.</p>
+
+      <div class="grid">
+        <!--
+          To add or launch a service, copy a card.
+          A live service: set class="status live", text "Available", and replace the
+          <span class="soon"> line with:  <a class="open" href="SERVICE URL">Open →</a>
+        -->
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h3M8 17h6"/></svg>
+          </div>
+          <span class="status live">Available</span>
+          <h3>Schedule Handler</h3>
+          <p>Book the Zoom account, Conference Rooms 1 and 2, and office drivers and vehicles.</p>
+          <a class="open" href="https://script.google.com/a/macros/dhsud.gov.ph/s/AKfycbyGJARie72Leaa-RxAVVa3-uftojHrOOlkXr9Sfy2VlLyRPACJl4KHk2l7zYziIITSw/exec" rel="noopener">Open Schedule Handler →</a>
+        </article>
+
+        <article class="card red">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+          </div>
+          <span class="status">In development</span>
+          <h3>Online Application for Leave</h3>
+          <p>Fill in CSC Form No. 6 online, print it ready to sign, and track your leave request.</p>
+          <span class="soon">Pilot to be announced.</span>
+        </article>
+
+        <article class="card gold">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/><path d="M10 7h4a3 3 0 0 1 3 3v4M7 10v4a3 3 0 0 0 3 3h4"/></svg>
+          </div>
+          <span class="status">Launching soon</span>
+          <h3>Document Routing</h3>
+          <p>Register, route and track official documents, with a QR code for each one.</p>
+          <span class="soon">Link goes live once the system is hosted.</span>
+        </article>
+      </div>
+
+      <div class="note">
+        These services are part of DHSUD Region 10's move to paperless processing. For help with a service, contact the Administrative Division.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span><strong>DHSUD Region 10</strong> · Department of Human Settlements and Urban Development</span>
+      <span>© <span id="yr">2026</span></span>
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
