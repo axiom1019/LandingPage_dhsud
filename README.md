@@ -1,4 +1,7 @@
-# DHSUD Region 10 landing page
+# LandingPage_dhsud
+This is created for the landing page project on DHSUD Region C
+
+## DHSUD Region 10 landing page
 
 A static page with no login. It links to each DHSUD Region 10 service, and each service handles its own sign-in.
 
