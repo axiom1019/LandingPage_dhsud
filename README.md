@@ -15,6 +15,23 @@ The layout follows the standard Philippine government (GOVPH) website pattern: a
 ## Add or launch a service
 Copy a `<li>` row in the services list in `index.html`. To launch one, change its `<div class="row is-off">` to `<a class="row" href="SERVICE URL">`, set the status to `class="status ok"` with the text `Available`, and copy the arrow icon from the Schedule Handler row.
 
+## Posting announcements
+Edit `announcements.json` (on GitHub: open the file, click the pencil, then commit). The Announcements box appears in the sidebar when the list has items and hides when it is `[]`. The newest five show, in the order listed. Example:
+
+```json
+[
+  {
+    "date": "2026-12-01",
+    "title": "Schedule Handler maintenance on December 3",
+    "text": "Bookings are paused from 12:00 to 1:00 PM.",
+    "link": "https://example.gov.ph/notice",
+    "linkText": "Read the memo"
+  }
+]
+```
+
+`date`, `text`, `link` and `linkText` are optional. Links must start with `https://`.
+
 ## Deploy on Vercel at dhsudr10.axiomaip.com
 1. Push this folder to a new GitHub repository.
 2. In Vercel: **Add New → Project**, import the repository. Framework preset: **Other**. No build command, output directory is the root.

@@ -6,6 +6,17 @@
   <title>DHSUD Region 10 Online Services</title>
   <meta name="description" content="Online services of the Department of Human Settlements and Urban Development, Region 10 (Northern Mindanao).">
   <meta name="theme-color" content="#1e3a8a">
+  <link rel="canonical" href="https://dhsudr10.axiomaip.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DHSUD Region 10">
+  <meta property="og:title" content="DHSUD Region 10 Online Services">
+  <meta property="og:description" content="File, book and track office requests without paper.">
+  <meta property="og:url" content="https://dhsudr10.axiomaip.com/">
+  <meta property="og:image" content="https://dhsudr10.axiomaip.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DHSUD Region 10 online services, over a photo of the regional office entrance">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -114,6 +125,16 @@
     .panel dl { margin: 0; display: grid; gap: var(--space-3); }
     .panel dt { font-weight: 700; color: var(--ink); }
     .panel dd { margin: 0; }
+
+    /* Announcements (filled from announcements.json; hidden when empty) */
+    .news[hidden] { display: none; }
+    .news ol { list-style: none; margin: 0; padding: 0; }
+    .news li { padding: var(--space-4); }
+    .news li + li { border-top: 1px solid var(--line); }
+    .news time { display: block; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .news h3 { margin: 2px 0 4px; font-size: 16.5px; line-height: 1.35; color: var(--ink); }
+    .news p { margin: 0; font-size: 15px; color: var(--label); }
+    .news a { font-weight: 700; }
 
     /* Footer (GOVPH standard) */
     .site-footer { background: var(--foot); color: var(--foot-ink); font-size: 15px; }
@@ -266,6 +287,10 @@
       </section>
 
       <aside class="side">
+        <section class="panel news" id="announcements" aria-labelledby="news-heading" hidden>
+          <h2 id="news-heading">Announcements</h2>
+          <ol id="news-list"></ol>
+        </section>
         <section class="panel" id="about">
           <h2>About the office</h2>
           <div class="body">
@@ -328,6 +353,36 @@
       var fd = new Intl.DateTimeFormat('en-PH', { timeZone: 'Asia/Manila', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       function tick() { var n = new Date(); t.textContent = ft.format(n); d.textContent = fd.format(n); }
       tick(); setInterval(tick, 1000);
+
+      // Announcements: edit announcements.json to post or remove notices.
+      fetch('announcements.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (items) {
+          if (!Array.isArray(items) || !items.length) return;
+          var list = document.getElementById('news-list');
+          var fdate = new Intl.DateTimeFormat('en-PH', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'Asia/Manila' });
+          items.slice(0, 5).forEach(function (it) {
+            if (!it || !it.title) return;
+            var li = document.createElement('li');
+            if (it.date) {
+              var tm = document.createElement('time');
+              tm.dateTime = it.date;
+              var dt = new Date(it.date + 'T00:00:00+08:00');
+              tm.textContent = isNaN(dt) ? it.date : fdate.format(dt);
+              li.appendChild(tm);
+            }
+            var h = document.createElement('h3'); h.textContent = it.title; li.appendChild(h);
+            if (it.text) { var p = document.createElement('p'); p.textContent = it.text; li.appendChild(p); }
+            if (it.link && /^https:\/\//.test(it.link)) {
+              var pa = document.createElement('p'), a = document.createElement('a');
+              a.href = it.link; a.rel = 'noopener'; a.textContent = it.linkText || 'Read more';
+              pa.appendChild(a); li.appendChild(pa);
+            }
+            list.appendChild(li);
+          });
+          if (list.children.length) document.getElementById('announcements').hidden = false;
+        })
+        .catch(function () {});
     })();
   </script>
 </body>
