@@ -46,7 +46,6 @@
     .govbar a { color: #e5e7eb; text-decoration: none; }
     .govbar a:hover { color: var(--white); text-decoration: underline; }
     .govbar .govph { font-weight: 700; letter-spacing: .04em; }
-    .govbar nav ul { list-style: none; display: flex; gap: var(--space-5); margin: 0; padding: 0; }
     .govbar :focus-visible { outline-color: var(--gold); }
 
     /* Masthead */
@@ -145,7 +144,6 @@
     }
     @media (max-width: 700px) {
       .wrap { padding-inline: var(--space-4); }
-      .govbar nav { display: none; }
       .masthead .wrap { padding-block: var(--space-4); }
       .identity img { width: 56px; height: 56px; }
       .identity strong { font-size: 18px; }
@@ -178,13 +176,6 @@
   <div class="govbar">
     <div class="wrap">
       <a class="govph" href="https://www.gov.ph/" rel="noopener">GOVPH</a>
-      <nav aria-label="Quick links">
-        <ul>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </div>
 
@@ -212,7 +203,6 @@
         <li><a href="/">Home</a></li>
         <li><a href="/#services">Services</a></li>
         <li><a href="/#about">About</a></li>
-        <li><a href="/#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
