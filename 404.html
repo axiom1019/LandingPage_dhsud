@@ -17,7 +17,7 @@
     @font-face { font-family: "Public Sans"; src: url("/assets/fonts/public-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 
     :root {
-      --navy: #1e3a8a; --navy-deep: #172554; --navy-hover: #1e40af; --navy-tint: #eff6ff;
+      --navy: #1e3a8a; --navy-deep: #172554; --navy-dark: #0f1a3d; --navy-hover: #1e40af; --navy-tint: #eff6ff;
       --red: #b91c1c; --gold: #fcd34d; --focus: #1d4ed8;
       --ink: #0f172a; --label: #334155; --muted: #475569; --line: #e2e8f0;
       --mist: #f8fafc; --hover: #f1f5f9; --white: #ffffff;
@@ -41,7 +41,7 @@
     .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-inline: var(--space-6); }
 
     /* Masthead */
-    .masthead { background: var(--white); border-bottom: 4px solid var(--red); }
+    .masthead { background: var(--white); }
     .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding-block: var(--space-5); }
     .identity { display: flex; align-items: center; gap: var(--space-4); color: var(--ink); text-decoration: none; }
     .identity img { width: 76px; height: 76px; flex: none; }
@@ -53,6 +53,15 @@
     .pst b { display: block; font-size: 13px; font-weight: 700; color: var(--label); text-transform: uppercase; letter-spacing: .06em; }
     .pst time { display: block; font-variant-numeric: tabular-nums; color: var(--ink); }
     .pst .clock { font-size: 20px; font-weight: 700; }
+
+    /* Main nav */
+    .mainnav { background: var(--navy-deep); border-bottom: 4px solid var(--red); }
+    .mainnav ul { list-style: none; display: flex; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+    .mainnav a { display: block; padding: 14px var(--space-5); color: var(--white); text-decoration: none; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: background-color 150ms var(--ease-out); }
+    .mainnav li:first-child a { padding-left: 0; }
+    .mainnav a:hover, .mainnav a[aria-current="page"] { background: var(--navy-dark); color: var(--white); }
+    .mainnav li:first-child a:hover, .mainnav li:first-child a[aria-current="page"] { background: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+    .mainnav :focus-visible { outline-color: var(--gold); outline-offset: -3px; }
 
     /* Banner */
     .banner { position: relative; isolation: isolate; color: var(--white); background: var(--navy-deep); }
@@ -132,6 +141,7 @@
       .identity strong { font-size: 18px; }
       .identity em { font-size: 15px; }
       .pst { display: none; }
+      .mainnav a { padding: 12px 14px; font-size: 14.5px; }
       .banner .wrap { padding-block: var(--space-7); }
       .banner::before { background: linear-gradient(180deg, rgb(15 23 42 / .8) 0%, rgb(23 37 84 / .92) 100%); }
       .banner p { font-size: 17.5px; }
@@ -172,6 +182,16 @@
       </div>
     </div>
   </header>
+
+  <nav class="mainnav" aria-label="Main">
+    <div class="wrap">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main>
     <div class="wrap"><div class="nf">
