@@ -4,222 +4,386 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DHSUD Region 10 Online Services</title>
-  <meta name="description" content="Online services of the Department of Human Settlements and Urban Development, Region 10.">
-  <meta name="theme-color" content="#10239e">
+  <meta name="description" content="Online services of the Department of Human Settlements and Urban Development, Region 10 (Northern Mindanao).">
+  <meta name="theme-color" content="#1e3a8a">
+  <link rel="canonical" href="https://dhsudr10.axiomaip.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DHSUD Region 10">
+  <meta property="og:title" content="DHSUD Region 10 Online Services">
+  <meta property="og:description" content="File, book and track office requests without paper.">
+  <meta property="og:url" content="https://dhsudr10.axiomaip.com/">
+  <meta property="og:image" content="https://dhsudr10.axiomaip.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DHSUD Region 10 online services, over a photo of the regional office entrance">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/hero.webp">
+  <link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family: "Public Sans"; src: url("assets/fonts/public-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Public Sans"; src: url("assets/fonts/public-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
     :root {
-      --navy: #10239e;
-      --navy-deep: #0a1766;
-      --red: #ce1126;
-      --gold: #f5b800;
-      --ink: #14193a;
-      --muted: #5a6078;
-      --line: #e3e6f0;
-      --bg: #f5f6fa;
-      --card: #ffffff;
+      --navy: #1e3a8a; --navy-deep: #172554; --navy-hover: #1e40af; --navy-tint: #eff6ff;
+      --red: #b91c1c; --gold: #fcd34d; --focus: #1d4ed8;
+      --ink: #0f172a; --label: #334155; --muted: #475569; --line: #e2e8f0;
+      --mist: #f8fafc; --hover: #f1f5f9; --white: #ffffff;
+      --govbar: #111827; --foot: #0f172a; --foot-ink: #cbd5e1; --foot-muted: #94a3b8;
+      --ok-bg: #dcfce7; --ok-ink: #166534; --wait-bg: #e2e8f0; --wait-ink: #334155;
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+      --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+      --radius: 10px; --ease-out: cubic-bezier(.16, 1, .3, 1);
     }
     * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.5;
-    }
-    a { color: inherit; }
+    html { color-scheme: light; -webkit-text-size-adjust: 100%; scrollbar-color: #94a3b8 var(--mist); scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100dvh; display: flex; flex-direction: column;
+      font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 17px; line-height: 1.55; font-variant-numeric: lining-nums; color: var(--ink); background: var(--white); }
+    ::selection { background: var(--navy); color: var(--white); }
+    a { color: var(--navy); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--navy-hover); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: var(--space-4); top: -100px; background: var(--navy); color: var(--white); padding: var(--space-2) var(--space-4); border-radius: 6px; z-index: 10; }
+    .skip:focus { top: var(--space-3); color: var(--white); }
+    .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-inline: var(--space-6); }
 
-    /* Top bar */
-    .topbar {
-      background: var(--navy-deep);
-      color: #fff;
-      font-size: 13px;
-    }
-    .topbar .wrap { display: flex; justify-content: space-between; gap: 12px; padding-block: 6px; }
-    .topbar span:last-child { opacity: .75; }
+    /* GOVPH bar */
+    .govbar { background: var(--govbar); color: #e5e7eb; font-size: 14px; }
+    .govbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 40px; }
+    .govbar a { color: #e5e7eb; text-decoration: none; }
+    .govbar a:hover { color: var(--white); text-decoration: underline; }
+    .govbar .govph { font-weight: 700; letter-spacing: .04em; }
+    .govbar nav ul { list-style: none; display: flex; gap: var(--space-5); margin: 0; padding: 0; }
+    .govbar :focus-visible { outline-color: var(--gold); }
 
-    .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+    /* Masthead */
+    .masthead { background: var(--white); }
+    .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); padding-block: var(--space-5); }
+    .identity { display: flex; align-items: center; gap: var(--space-4); color: var(--ink); text-decoration: none; }
+    .identity img { width: 76px; height: 76px; flex: none; }
+    .identity span { display: flex; flex-direction: column; line-height: 1.25; }
+    .identity small { font-size: 14px; color: var(--muted); }
+    .identity strong { font-size: 22px; color: var(--navy); }
+    .identity em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--red); }
+    .pst { text-align: right; font-size: 14px; color: var(--muted); line-height: 1.35; }
+    .pst b { display: block; font-size: 13px; font-weight: 700; color: var(--label); text-transform: uppercase; letter-spacing: .06em; }
+    .pst time { display: block; font-variant-numeric: tabular-nums; color: var(--ink); }
+    .pst .clock { font-size: 20px; font-weight: 700; }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      color: #fff;
-      background: var(--navy-deep);
-      isolation: isolate;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute; top: 0; bottom: 0; right: 0; width: 55%; z-index: -1;
-      background:
-        linear-gradient(90deg, var(--navy-deep) 0%, rgba(10,23,102,.55) 22%, rgba(10,23,102,0) 45%),
-        url("assets/hero.webp") 78% center / cover no-repeat;
-    }
-    .hero .wrap { width: 100%; }
-    .hero-text { max-width: 520px; }
-    .hero::after {
-      content: "";
-      position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
-      background: linear-gradient(90deg, var(--navy) 0 50%, var(--red) 50% 100%);
-    }
-    .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-    .brand img { width: 64px; height: 64px; border-radius: 50%; background: #fff; padding: 3px; }
-    .brand div { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; line-height: 1.35; }
-    .brand strong { display: block; font-size: 15px; letter-spacing: .04em; }
-    .hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; margin: 0 0 16px; max-width: 13ch; }
-    .hero h1 em { font-style: normal; color: var(--gold); }
-    .hero p { font-size: 18px; max-width: 46ch; margin: 0 0 28px; opacity: .92; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #fff; color: var(--navy);
-      font-weight: 600; text-decoration: none;
-      padding: 12px 22px; border-radius: 8px;
-    }
-    .btn:hover { background: var(--gold); color: var(--navy-deep); }
-    .btn:focus-visible, .card a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    /* Main nav */
+    .mainnav { background: var(--navy); border-bottom: 4px solid var(--red); }
+    .mainnav ul { list-style: none; display: flex; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
+    .mainnav a { display: block; padding: 14px var(--space-5); color: var(--white); text-decoration: none; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: background-color 150ms var(--ease-out); }
+    .mainnav li:first-child a { padding-left: 0; }
+    .mainnav a:hover, .mainnav a[aria-current="page"] { background: var(--navy-deep); color: var(--white); }
+    .mainnav li:first-child a:hover, .mainnav li:first-child a[aria-current="page"] { background: none; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+    .mainnav :focus-visible { outline-color: var(--gold); outline-offset: -3px; }
 
-    /* Services */
-    .services { padding-block: 56px 64px; }
-    .services h2 { font-size: 28px; margin: 0 0 6px; }
-    .services > .wrap > p { color: var(--muted); margin: 0 0 28px; }
-    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-top: 4px solid var(--navy);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .card.red { border-top-color: var(--red); }
-    .card.gold { border-top-color: var(--gold); }
-    .card .icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      display: grid; place-items: center;
-      background: #eef0fb; color: var(--navy);
-    }
-    .card.red .icon { background: #fdecee; color: var(--red); }
-    .card.gold .icon { background: #fff6d9; color: #9a7300; }
-    .card h3 { margin: 4px 0 0; font-size: 19px; }
-    .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
-    .status {
-      align-self: flex-start;
-      font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 999px;
-      background: #eef0f5; color: var(--muted);
-    }
-    .status.live { background: #e3f5ea; color: #136c34; }
-    .card a.open {
-      align-self: flex-start;
-      margin-top: 6px;
-      font-weight: 600; text-decoration: none; color: var(--navy);
-    }
-    .card a.open:hover { text-decoration: underline; }
-    .card .soon { margin-top: 6px; font-size: 14px; color: var(--muted); }
+    /* Banner */
+    .banner { position: relative; isolation: isolate; color: var(--white); background: var(--navy-deep); }
+    .banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; z-index: -2; }
+    .banner::before { content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgb(15 23 42 / .88) 0%, rgb(23 37 84 / .72) 45%, rgb(23 37 84 / .15) 100%); }
+    .banner .wrap { padding-block: 88px; }
+    .banner h1 { font-size: clamp(2.1rem, 1.4rem + 2.4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 var(--space-4); max-width: 16ch; text-wrap: balance; }
+    .banner p { font-size: 19px; margin: 0 0 var(--space-6); max-width: 44ch; color: #e2e8f0; }
+    .btn { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--white); color: var(--navy); font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 8px; transition: background-color 150ms var(--ease-out); }
+    .btn:hover { background: var(--navy-tint); color: var(--navy); }
+    .banner :focus-visible { outline-color: var(--gold); }
 
-    .note {
-      margin-top: 32px;
-      background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold);
-      border-radius: 8px; padding: 16px 20px; color: var(--muted); font-size: 15px;
+    /* Content */
+    main { flex: 1; }
+    .content { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--space-7); padding-block: var(--space-8); align-items: start; }
+    .section-title { font-size: 26px; line-height: 1.2; margin: 0 0 var(--space-2); color: var(--navy); }
+    .section-lead { margin: 0 0 var(--space-5); color: var(--muted); }
+
+    .directory { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .directory li + li { border-top: 1px solid var(--line); }
+    .row { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: var(--space-4); align-items: center; padding: var(--space-5); min-height: 96px; color: var(--ink); text-decoration: none; background: var(--white); transition: background-color 150ms var(--ease-out); }
+    a.row:hover { background: var(--hover); color: var(--ink); }
+    a.row:focus-visible { outline-offset: -3px; border-radius: 0; }
+    .icon { width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; background: var(--navy-tint); color: var(--navy); }
+    .row.is-off .icon { background: var(--hover); color: var(--muted); }
+    .row h3 { margin: 0 0 2px; font-size: 19px; line-height: 1.3; }
+    .row p { margin: 0; font-size: 15.5px; color: var(--muted); }
+    .end { display: flex; align-items: center; gap: var(--space-3); justify-self: end; }
+    .status { font-size: 14px; font-weight: 700; white-space: nowrap; padding: 4px 12px; border-radius: 999px; background: var(--wait-bg); color: var(--wait-ink); }
+    .status.ok { background: var(--ok-bg); color: var(--ok-ink); }
+    .go { color: var(--navy); transition: transform 150ms var(--ease-out); }
+    a.row:hover .go { transform: translateX(3px); }
+
+    /* Sidebar */
+    .side { display: grid; gap: var(--space-5); }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .panel h2 { margin: 0; padding: var(--space-3) var(--space-4); background: var(--navy); color: var(--white); font-size: 16px; }
+    .panel .body { padding: var(--space-4); font-size: 15.5px; color: var(--label); }
+    .panel .body p { margin: 0 0 var(--space-3); }
+    .panel .body p:last-child { margin: 0; }
+    .panel dl { margin: 0; display: grid; gap: var(--space-3); }
+    .panel dt { font-weight: 700; color: var(--ink); }
+    .panel dd { margin: 0; }
+
+    /* Announcements (filled from announcements.json; hidden when empty) */
+    .news[hidden] { display: none; }
+    .news ol { list-style: none; margin: 0; padding: 0; }
+    .news li { padding: var(--space-4); }
+    .news li + li { border-top: 1px solid var(--line); }
+    .news time { display: block; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .news h3 { margin: 2px 0 4px; font-size: 16.5px; line-height: 1.35; color: var(--ink); }
+    .news p { margin: 0; font-size: 15px; color: var(--label); }
+    .news a { font-weight: 700; }
+
+    /* Footer (GOVPH standard) */
+    .site-footer { background: var(--foot); color: var(--foot-ink); font-size: 15px; }
+    .site-footer .cols { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: var(--space-6); padding-block: var(--space-7); }
+    .site-footer h2 { font-size: 15px; color: var(--white); margin: 0 0 var(--space-3); text-transform: uppercase; letter-spacing: .06em; }
+    .site-footer p { margin: 0 0 var(--space-3); color: var(--foot-muted); }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .site-footer a { color: var(--foot-ink); text-decoration: none; }
+    .site-footer a:hover { color: var(--white); text-decoration: underline; }
+    .site-footer :focus-visible { outline-color: var(--gold); }
+    .legal { border-top: 1px solid rgb(148 163 184 / .25); }
+    .legal .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-5); padding-block: var(--space-4); font-size: 14px; color: var(--foot-muted); }
+
+    @media (max-width: 960px) {
+      .content { grid-template-columns: 1fr; gap: var(--space-6); }
+      .site-footer .cols { grid-template-columns: 1fr 1fr; }
+      .site-footer .cols > :first-child { grid-column: 1 / -1; }
     }
-
-    footer { background: var(--navy-deep); color: #cfd4f2; font-size: 14px; }
-    footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-    footer strong { color: #fff; }
-
-    @media (max-width: 720px) {
-      .topbar span:last-child { display: none; }
-      .hero { min-height: 560px; align-items: flex-end; padding-bottom: 48px; }
-      .hero::before { width: 100%; background: linear-gradient(0deg, rgba(10,23,102,.97) 0%, rgba(10,23,102,.85) 50%, rgba(10,23,102,.3) 100%), url("assets/hero.webp") 80% center / cover no-repeat; }
-      .hero p { font-size: 16px; }
-      .wrap { padding-inline: 16px; }
+    @media (max-width: 700px) {
+      .wrap { padding-inline: var(--space-4); }
+      .govbar nav { display: none; }
+      .masthead .wrap { padding-block: var(--space-4); }
+      .identity img { width: 56px; height: 56px; }
+      .identity strong { font-size: 18px; }
+      .identity em { font-size: 15px; }
+      .pst { display: none; }
+      .mainnav a { padding: 12px 14px; font-size: 14.5px; }
+      .banner .wrap { padding-block: var(--space-7); }
+      .banner::before { background: linear-gradient(180deg, rgb(15 23 42 / .8) 0%, rgb(23 37 84 / .92) 100%); }
+      .banner p { font-size: 17.5px; }
+      .content { padding-block: var(--space-6) var(--space-7); }
+      .row { grid-template-columns: 44px minmax(0, 1fr); padding: var(--space-4); gap: var(--space-3) var(--space-4); align-items: start; }
+      .icon { width: 44px; height: 44px; }
+      .end { grid-column: 2; justify-self: start; }
+      .site-footer .cols { grid-template-columns: 1fr; gap: var(--space-5); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      a.row:hover .go { transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
+  <a class="skip" href="#services">Skip to services</a>
+
+  <div class="govbar">
     <div class="wrap">
-      <span>Republic of the Philippines</span>
-      <span>Department of Human Settlements and Urban Development</span>
+      <a class="govph" href="https://www.gov.ph/" rel="noopener">GOVPH</a>
+      <nav aria-label="Quick links">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
 
-  <header class="hero">
-    <div class="wrap"><div class="hero-text">
-      <div class="brand">
-        <img src="assets/seal.png" alt="DHSUD seal" width="64" height="64">
-        <div><strong>DHSUD Region 10</strong>Northern Mindanao</div>
-      </div>
-      <h1>Online services for <em>Region 10</em></h1>
-      <p>File, book and track office requests online. Pick a service below. Each service asks you to sign in.</p>
-      <a class="btn" href="#services">See services
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="identity" href="/">
+        <img src="assets/seal.png" alt="DHSUD seal" width="76" height="76">
+        <span>
+          <small>Republic of the Philippines</small>
+          <strong>Department of Human Settlements and Urban Development</strong>
+          <em>Region 10, Northern Mindanao</em>
+        </span>
       </a>
-    </div></div>
+      <div class="pst" aria-live="off">
+        <b>Philippine Standard Time</b>
+        <time class="clock" id="pst-time">&nbsp;</time>
+        <time id="pst-date">&nbsp;</time>
+      </div>
+    </div>
   </header>
 
-  <main class="services" id="services">
+  <nav class="mainnav" aria-label="Main">
     <div class="wrap">
-      <h2>Services</h2>
-      <p>Open a service to sign in. Your access depends on the account registered for that service.</p>
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <div class="grid">
-        <!--
-          To add or launch a service, copy a card.
-          A live service: set class="status live", text "Available", and replace the
-          <span class="soon"> line with:  <a class="open" href="SERVICE URL">Open →</a>
-        -->
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h3M8 17h6"/></svg>
-          </div>
-          <span class="status live">Available</span>
-          <h3>Schedule Handler</h3>
-          <p>Book the Zoom account, Conference Rooms 1 and 2, and office drivers and vehicles.</p>
-          <a class="open" href="https://script.google.com/a/macros/dhsud.gov.ph/s/AKfycbyGJARie72Leaa-RxAVVa3-uftojHrOOlkXr9Sfy2VlLyRPACJl4KHk2l7zYziIITSw/exec" rel="noopener">Open Schedule Handler →</a>
-        </article>
-
-        <article class="card red">
-          <div class="icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-          </div>
-          <span class="status">In development</span>
-          <h3>Online Application for Leave</h3>
-          <p>Fill in CSC Form No. 6 online, print it ready to sign, and track your leave request.</p>
-          <span class="soon">Pilot to be announced.</span>
-        </article>
-
-        <article class="card gold">
-          <div class="icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/><path d="M10 7h4a3 3 0 0 1 3 3v4M7 10v4a3 3 0 0 0 3 3h4"/></svg>
-          </div>
-          <span class="status">Launching soon</span>
-          <h3>Document Routing</h3>
-          <p>Register, route and track official documents, with a QR code for each one.</p>
-          <span class="soon">Link goes live once the system is hosted.</span>
-        </article>
+  <main>
+    <section class="banner">
+      <img src="assets/hero.webp" width="1600" height="1200" alt="" fetchpriority="high">
+      <div class="wrap">
+        <h1>Region 10 online services</h1>
+        <p>File, book and track office requests without paper. Choose a service and sign in with the account registered for it.</p>
+        <a class="btn" href="#services">See the services
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
       </div>
+    </section>
 
-      <div class="note">
-        These services are part of DHSUD Region 10's move to paperless processing. For help with a service, contact the Administrative Division.
-      </div>
+    <div class="wrap content">
+      <section id="services" tabindex="-1">
+        <h2 class="section-title" id="services-heading">Online services</h2>
+        <p class="section-lead">Each service has its own sign-in. Services marked in development will open here when they launch.</p>
+        <ul class="directory" aria-labelledby="services-heading">
+          <!--
+            To launch a service: change its <div class="row is-off"> to
+            <a class="row" href="SERVICE URL">, set the status to class="status ok" with the text "Available",
+            and add the arrow icon (copy it from the Schedule Handler row).
+          -->
+          <li>
+            <a class="row" href="https://script.google.com/a/macros/dhsud.gov.ph/s/AKfycbyGJARie72Leaa-RxAVVa3-uftojHrOOlkXr9Sfy2VlLyRPACJl4KHk2l7zYziIITSw/exec" rel="noopener">
+              <span class="icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18M8 14h3M8 17h6"/></svg>
+              </span>
+              <span>
+                <h3>Schedule Handler</h3>
+                <p>Book the Zoom account, Conference Rooms 1 and 2, and office drivers and vehicles. Sign in with your dhsud.gov.ph account.</p>
+              </span>
+              <span class="end">
+                <span class="status ok">Available</span>
+                <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <div class="row is-off">
+              <span class="icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M9 13h6M9 17h4"/></svg>
+              </span>
+              <span>
+                <h3>Online Application for Leave</h3>
+                <p>Fill in CSC Form No. 6 online, print it ready to sign, and follow your request.</p>
+              </span>
+              <span class="end"><span class="status">In development</span></span>
+            </div>
+          </li>
+          <li>
+            <div class="row is-off">
+              <span class="icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M14 6.5h2.5a2.5 2.5 0 0 1 2.5 2.5v2M10 17.5H7.5A2.5 2.5 0 0 1 5 15v-2"/></svg>
+              </span>
+              <span>
+                <h3>Document Routing</h3>
+                <p>Register, route and track official documents, each with its own QR code.</p>
+              </span>
+              <span class="end"><span class="status">Launching soon</span></span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <aside class="side">
+        <section class="panel news" id="announcements" aria-labelledby="news-heading" hidden>
+          <h2 id="news-heading">Announcements</h2>
+          <ol id="news-list"></ol>
+        </section>
+        <section class="panel" id="about">
+          <h2>About the office</h2>
+          <div class="body">
+            <p>DHSUD Region 10 serves Northern Mindanao. These services move the office's paper requests online, one process at a time.</p>
+          </div>
+        </section>
+        <section class="panel" id="contact">
+          <h2>Signing in</h2>
+          <div class="body">
+            <dl>
+              <div><dt>Schedule Handler</dt><dd>Your dhsud.gov.ph account.</dd></div>
+              <div><dt>Application for Leave</dt><dd>Your dhsud.gov.ph account, or your registered personal email for staff without one.</dd></div>
+              <div><dt>Need help?</dt><dd>Contact the Administrative Division.</dd></div>
+            </dl>
+          </div>
+        </section>
+      </aside>
     </div>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span><strong>DHSUD Region 10</strong> · Department of Human Settlements and Urban Development</span>
-      <span>© <span id="yr">2026</span></span>
+  <footer class="site-footer">
+    <div class="wrap cols">
+      <div>
+        <h2>Republic of the Philippines</h2>
+        <p>All content is in the public domain unless otherwise stated.</p>
+      </div>
+      <div>
+        <h2>About GOVPH</h2>
+        <p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
+        <ul>
+          <li><a href="https://www.gov.ph/" rel="noopener">GOV.PH</a></li>
+          <li><a href="https://data.gov.ph/" rel="noopener">Open Data Portal</a></li>
+          <li><a href="https://www.officialgazette.gov.ph/" rel="noopener">Official Gazette</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Government links</h2>
+        <ul>
+          <li><a href="https://op-proper.gov.ph/" rel="noopener">Office of the President</a></li>
+          <li><a href="https://ovp.gov.ph/" rel="noopener">Office of the Vice President</a></li>
+          <li><a href="https://legacy.senate.gov.ph/" rel="noopener">Senate of the Philippines</a></li>
+          <li><a href="https://www.congress.gov.ph/" rel="noopener">House of Representatives</a></li>
+          <li><a href="https://sc.judiciary.gov.ph/" rel="noopener">Supreme Court</a></li>
+          <li><a href="https://dhsud.gov.ph/" rel="noopener">DHSUD Central Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div class="wrap">
+        <span>Department of Human Settlements and Urban Development, Region 10</span>
+        <span>© <span id="yr">2026</span></span>
+      </div>
     </div>
   </footer>
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script>
+    (function () {
+      document.getElementById('yr').textContent = new Date().getFullYear();
+      var t = document.getElementById('pst-time'), d = document.getElementById('pst-date');
+      var ft = new Intl.DateTimeFormat('en-PH', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
+      var fd = new Intl.DateTimeFormat('en-PH', { timeZone: 'Asia/Manila', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      function tick() { var n = new Date(); t.textContent = ft.format(n); d.textContent = fd.format(n); }
+      tick(); setInterval(tick, 1000);
+
+      // Announcements: edit announcements.json to post or remove notices.
+      fetch('announcements.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (items) {
+          if (!Array.isArray(items) || !items.length) return;
+          var list = document.getElementById('news-list');
+          var fdate = new Intl.DateTimeFormat('en-PH', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'Asia/Manila' });
+          items.slice(0, 5).forEach(function (it) {
+            if (!it || !it.title) return;
+            var li = document.createElement('li');
+            if (it.date) {
+              var tm = document.createElement('time');
+              tm.dateTime = it.date;
+              var dt = new Date(it.date + 'T00:00:00+08:00');
+              tm.textContent = isNaN(dt) ? it.date : fdate.format(dt);
+              li.appendChild(tm);
+            }
+            var h = document.createElement('h3'); h.textContent = it.title; li.appendChild(h);
+            if (it.text) { var p = document.createElement('p'); p.textContent = it.text; li.appendChild(p); }
+            if (it.link && /^https:\/\//.test(it.link)) {
+              var pa = document.createElement('p'), a = document.createElement('a');
+              a.href = it.link; a.rel = 'noopener'; a.textContent = it.linkText || 'Read more';
+              pa.appendChild(a); li.appendChild(pa);
+            }
+            list.appendChild(li);
+          });
+          if (list.children.length) document.getElementById('announcements').hidden = false;
+        })
+        .catch(function () {});
+    })();
+  </script>
 </body>
 </html>
