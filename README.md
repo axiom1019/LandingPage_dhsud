@@ -53,3 +53,4 @@ Every certificate QR code points to `https://dhsudr10.axiomaip.com/v/<code>`, so
 
 Keep the redirects temporary (not permanent), so browsers don't cache the old address after a move.
 
+Staging (test) verify app is already forwarded at `/v-test/<code>`; test QR codes use that address (staff app Settings → QR address `https://dhsudr10.axiomaip.com/v-test/`). Production gets `/v/` when it is deployed.
