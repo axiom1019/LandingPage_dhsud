@@ -40,3 +40,16 @@ Edit `announcements.json` (on GitHub: open the file, click the pencil, then comm
 5. Every push to the main branch redeploys the page.
 
 Note: Vercel's free Hobby plan is for personal, non-commercial use. Check with your approvers whether an official office page needs the Pro plan.
+
+## Certificate verification forwarding (/v)
+Every certificate QR code points to `https://dhsudr10.axiomaip.com/v/<code>`, so printed codes keep working if the app behind it moves. When the verify app is deployed, add this to `vercel.json` (with its deployment ID) and launch the "Verify a Certificate" row with `href="/v"`:
+
+```json
+"redirects": [
+  { "source": "/v/:code", "destination": "https://script.google.com/macros/s/<VERIFY_DEPLOYMENT_ID>/exec?c=:code", "permanent": false },
+  { "source": "/v", "destination": "https://script.google.com/macros/s/<VERIFY_DEPLOYMENT_ID>/exec", "permanent": false }
+]
+```
+
+Keep the redirects temporary (not permanent), so browsers don't cache the old address after a move.
+
